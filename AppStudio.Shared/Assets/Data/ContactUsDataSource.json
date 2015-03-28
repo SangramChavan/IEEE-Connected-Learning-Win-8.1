@@ -1,0 +1,34 @@
+{
+  "Items": [
+    {
+      "Type": "Url",
+      "Title": "Address",
+      "Icon": "/Assets/DataImages/Item-dd7eb8ba-7f16-46b0-9a38-ff3ebe9433c5.png",
+      "Target": "bingmaps:?where=3 Park Avenue,17th Floor New York,NY 100165997 USA"
+    },
+    {
+      "Type": "Url",
+      "Title": "How to get to",
+      "Icon": "/Assets/DataImages/Item-53e88f6f-42e4-4d2c-ab41-a8d568894434.png",
+      "Target": "bingmaps:?where=1 157th Avenue Northeast, Redmond, WA 98052, United States"
+    },
+    {
+      "Type": "Url",
+      "Title": "Phone",
+      "Icon": "/Assets/DataImages/Item-9ce253a3-5d2c-4151-b88c-6188566638a0.png",
+      "Target": "tel:1-800-555-0122"
+    },
+    {
+      "Type": "Url",
+      "Title": "E-mail",
+      "Icon": "/Assets/DataImages/Item-18a79169-63d2-4418-931d-dc6f9a6be1a8.png",
+      "Target": "mailto:help@computer.org"
+    },
+    {
+      "Type": "Url",
+      "Title": "www.ieee.org",
+      "Icon": "/Assets/DataImages/Item-492dd772-70d2-480e-b4d5-66c89315293c.png",
+      "Target": "http://www.ieee.org"
+    }
+  ]
+}

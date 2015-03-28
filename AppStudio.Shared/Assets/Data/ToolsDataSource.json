@@ -1,0 +1,22 @@
+{
+  "Items": [
+    {
+      "Type": "Section",
+      "Title": "Publications and Standards",
+      "Icon": "/Assets/DataImages/ModuleLogo.png",
+      "Target": "PublicationsAndStandardsPage"
+    },
+    {
+      "Type": "Section",
+      "Title": "Author Resources CS",
+      "Icon": "/Assets/DataImages/ModuleLogo-1.png",
+      "Target": "AuthorResourcesCSPage"
+    },
+    {
+      "Type": "Section",
+      "Title": "Templates and Instructions",
+      "Icon": "/Assets/DataImages/ModuleLogo-2.png",
+      "Target": "TemplatesAndInstructionsPage"
+    }
+  ]
+}

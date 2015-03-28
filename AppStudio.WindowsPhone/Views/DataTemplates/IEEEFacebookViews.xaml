@@ -1,0 +1,46 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:AppStudio.Controls"
+    xmlns:html2xaml="using:AppStudio.Controls.Html2Xaml"
+    xmlns:commands="using:AppStudio.Commands">
+
+    <!-- ListPhotoTile -->
+    <DataTemplate x:Key="IEEEFacebookList">
+        <Grid>
+            <controls:VariableSizedGrid ItemsSource="{Binding Items}"  SelectionMode="None" IsSwipeEnabled="False" IsItemClickEnabled="True"  commands:ItemClickCommand.Command="{Binding ItemClickCommand}"
+                                        ItemTemplate="{StaticResource IEEEFacebookItem}"
+                                        ItemsPanel="{StaticResource IEEEFacebookItemsPanel}" />
+            <ProgressBar Height="40" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding ProgressBarVisibility}" />
+        </Grid>
+    </DataTemplate>
+
+    <!-- ListPhotoTile ItemsPanel-->
+    <ItemsPanelTemplate x:Key="IEEEFacebookItemsPanel">
+        <VariableSizedWrapGrid ItemHeight="80" ItemWidth="80" Orientation="Horizontal" />
+    </ItemsPanelTemplate>
+
+    <!-- ListPhotoTile Item -->
+    <DataTemplate x:Key="IEEEFacebookItem">
+        <Grid Margin="5">
+            <Image Source="{Binding ImageUrl}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="IEEEFacebook1DetailDetail">
+        <ScrollViewer ZoomMode="Disabled">
+            <StackPanel Margin="12,0">
+                <TextBlock Margin="0,16" Text="{Binding Title}" Style="{StaticResource PageTitleStyle}"/>
+                <TextBlock Style="{StaticResource TitleStyle}" Text="{Binding Title}" LineStackingStrategy="MaxHeight"/>
+                <Button Margin="0,16,0,0" Style="{StaticResource ImageButtonStyle}" 
+                        Command="{Binding Source={StaticResource ActionCommands}, Path=ShowImage}" CommandParameter="{Binding ImageUrl}">
+                    <Viewbox MaxWidth="400" MaxHeight="300">
+                        <Image Source="{Binding ImageUrl}"/>
+                    </Viewbox>
+                </Button>
+                <RichTextBlock Margin="0,12" html2xaml:Properties.Html="{Binding Content}" html2xaml:Properties.ContainsCrlf="False"
+                               Style="{Binding DataContext.DisplayFontSize, ElementName=Flip, Converter={StaticResource RichDescriptionStyleConverter}}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DataTemplate>
+</ResourceDictionary>

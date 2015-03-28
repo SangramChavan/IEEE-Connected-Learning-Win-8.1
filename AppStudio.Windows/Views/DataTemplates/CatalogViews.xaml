@@ -1,0 +1,125 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:AppStudio.Controls"
+    xmlns:html2xaml="using:AppStudio.Controls.Html2Xaml"
+    xmlns:commands="using:AppStudio.Commands">
+
+    <!-- ListVerticalCards -->
+    <DataTemplate x:Key="CatalogList">
+        <Grid>
+            <GridView ItemsSource="{Binding PreviewItems}" SelectionMode="None" IsSwipeEnabled="False" IsItemClickEnabled="True" commands:ItemClickCommand.Command="{Binding ItemClickCommand}"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ItemTemplate="{StaticResource CatalogItem}"/>
+            <ProgressBar Height="40" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding ProgressBarVisibility}" />
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CatalogListSnapped">
+        <Grid>
+            <GridView ItemsSource="{Binding PreviewItems}" SelectionMode="None" IsSwipeEnabled="False" IsItemClickEnabled="True" commands:ItemClickCommand.Command="{Binding ItemClickCommand}"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      ItemTemplate="{StaticResource CatalogItemSnapped}"/>
+            <ProgressBar Height="40" VerticalAlignment="Top" IsIndeterminate="True" Visibility="{Binding ProgressBarVisibility}" />
+        </Grid>
+    </DataTemplate>
+
+    <!-- ListVerticalCards Item -->
+    <DataTemplate x:Key="CatalogItem">
+        <Grid Width="220" Height="260">                        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="{Binding Image}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1" Style="{StaticResource BoxGrid}">
+                <Grid Margin="6,2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Style="{StaticResource BoxTitleStyle}" Text="{Binding Name}" MaxLines="2"/>
+                    <TextBlock Grid.Row="1" Style="{StaticResource BoxSubtitleStyle}" Text="{Binding Reference}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CatalogItemSnapped">
+        <Grid Width="220" Height="260">                        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="{Binding Image}" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid Grid.Row="1" Style="{StaticResource BoxGrid}">
+                <Grid Margin="6,2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Style="{StaticResource BoxTitleStyle}" Text="{Binding Name}" MaxLines="1"/>
+                    <TextBlock Grid.Row="1" Style="{StaticResource BoxSubtitleStyle}" Text="{Binding Reference}" />
+                </Grid>
+            </Grid>            
+        </Grid>
+    </DataTemplate>
+
+    <!-- DetailMultiColumn -->
+    <DataTemplate x:Key="Catalog1DetailDetail">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" ZoomMode="Disabled">
+            <StackPanel>
+                <TextBlock Style="{StaticResource PageTitleStyle}" Text="{Binding Name}"/>
+                <TextBlock Margin="0,12,0,0" VerticalAlignment="Top" Style="{StaticResource TitleStyle}" Text="{Binding Reference}"/>
+                <Button Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource ImageButtonStyle}" 
+                        Command="{Binding Source={StaticResource ActionCommands}, Path=ShowImage}" CommandParameter="{Binding Image}">
+                    <Viewbox StretchDirection="DownOnly">
+                        <Image Source="{Binding Image}" Stretch="UniformToFill"/>
+                    </Viewbox>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+    </DataTemplate>
+    <DataTemplate x:Key="Catalog1DetailDetailSnapped">
+        <ContentPresenter ContentTemplate="{StaticResource Catalog1DetailDetail}" />
+    </DataTemplate>
+    <!-- DetailMultiColumn -->
+    <DataTemplate x:Key="Catalog2DetailDetail">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" ZoomMode="Disabled">
+            <StackPanel>
+                <TextBlock Style="{StaticResource PageTitleStyle}" Text="Specs"/>
+                <TextBlock Margin="0,12,0,0" VerticalAlignment="Top" Style="{StaticResource TitleStyle}" Text="{Binding Specification}"/>
+                <Button Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource ImageButtonStyle}" 
+                        Command="{Binding Source={StaticResource ActionCommands}, Path=ShowImage}" CommandParameter="">
+                    <Viewbox StretchDirection="DownOnly">
+                        <Image Source="" Stretch="UniformToFill"/>
+                    </Viewbox>
+                </Button>
+                <Button Margin="0,12,0,0" VerticalAlignment="Top" Style="{StaticResource DescriptionUrlActionButton}"
+                        Command="{Binding Source={StaticResource ActionCommands}, Path=NavigateToUrl}" CommandParameter="{Binding MoreInfo}"
+                        Content="{Binding MoreInfo}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DataTemplate>
+    <DataTemplate x:Key="Catalog2DetailDetailSnapped">
+        <ContentPresenter ContentTemplate="{StaticResource Catalog2DetailDetail}" />
+    </DataTemplate>
+    <!-- DetailMultiColumn -->
+    <DataTemplate x:Key="Catalog3DetailDetail">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" ZoomMode="Disabled">
+            <StackPanel>
+                <TextBlock Style="{StaticResource PageTitleStyle}" Text="Description"/>
+                <Button Margin="0,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource ImageButtonStyle}" 
+                        Command="{Binding Source={StaticResource ActionCommands}, Path=ShowImage}" CommandParameter="">
+                    <Viewbox StretchDirection="DownOnly">
+                        <Image Source="" Stretch="UniformToFill"/>
+                    </Viewbox>
+                </Button>
+                <RichTextBlock Margin="0,12,0,0" Style="{StaticResource RichDescriptionStyle}" html2xaml:Properties.Html="{Binding Description}" html2xaml:Properties.ContainsCrlf="True"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DataTemplate>
+    <DataTemplate x:Key="Catalog3DetailDetailSnapped">
+        <ContentPresenter ContentTemplate="{StaticResource Catalog3DetailDetail}" />
+    </DataTemplate>
+</ResourceDictionary>
