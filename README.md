@@ -1,7 +1,5 @@
 # IEEE-Connected-Learning-Win-8.1
 
-# IEEE-Connected-Learning
-
 ## Features:
 
 1. Social Network - <a href="https://ieee-collabratec.ieee.org">IEEE Collabratec™ </a>
